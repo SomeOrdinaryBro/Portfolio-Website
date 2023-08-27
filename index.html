@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sajid Sabreen | Backend Developer Portfolio</title>
+    <meta name="description" content="Explore Sajid Sabreen's portfolio—a dedicated Backend Developer with a passion for systems administration, Python development, and seamless user experiences. View projects, skills, and contact details.">
+
+    <title>Sajid Sabreen | Weaving Code and Innovation: Backend Portfolio</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
     <link rel="stylesheet" href="site-logo.css" />
@@ -24,7 +26,7 @@
     <section id="particle-background"></section>
 
 
-    <nav id="desktop-nav">
+    <nav id="desktop-nav" role="navigation" aria-label="Main Navigation for Desktop">
       <div class="logo">My Portfolio</div>
       <div>
         <ul class="nav-links">
@@ -35,7 +37,7 @@
       </div>
     </nav>
 
-    <nav id="hamburger-nav">
+    <nav id="hamburger-nav" role="navigation" aria-label="Main Navigation for Phones">
       <div class="logo">My Portfolio</div>
       <div class="hamburger-menu">
         <div class="hamburger-icon" onclick="toggleMenu()">
@@ -44,9 +46,11 @@
           <span></span>
         </div>
         <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <ul class="menu-links">
+            <li><a href="#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+            <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          </ul>        
         </div>
       </div>
     </nav>
@@ -65,9 +69,9 @@
                 </button>
             </div>
             <div id="socials-container">
-                <img src="./assets/linkedin.png" alt="My Linkedin Profile" class="icon"onclick="location.href='https://www.linkedin.com/in/sajidsabreen/'">
-                <img src="./assets/github.png" alt="My Github Profile" class="icon"onclick="location.href='https://github.com/SomeOrdinaryBro'">
-            </div>
+              <img src="./assets/linkedin.png" alt="My Linkedin Profile" class="icon" width="auto" height="auto" onclick="location.href='https://www.linkedin.com/in/sajidsabreen/'">
+              <img src="./assets/github.png" alt="My Github Profile" class="icon" width="auto" height="auto" onclick="location.href='https://github.com/SomeOrdinaryBro'">
+            </div>            
         </div>
     </section>
 
@@ -123,33 +127,21 @@
             <h2 class="experience-sub-title">Frontend Development</h2>
             <div class="article-container">
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Checkmark" class="icon" width="auto" height="auto">
                 <div>
                   <h3>HTML</h3>
                   <p>Experienced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Checkmark" class="icon" width="auto" height="auto">
                 <div>
                   <h3>CSS</h3>
                   <p>Experienced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Checkmark" class="icon" width="auto" height="auto">
                 <div>
                 <div>
                   <h3>JavaScript</h3>
@@ -157,22 +149,14 @@
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Checkmark" class="icon" width="auto" height="auto">
                 <div>
                   <h3>TailwindCSS</h3>
                   <p>Basic</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Checkmark" class="icon" width="auto" height="auto">
                 <div>
                   <h3>Figma</h3>
                   <p>Basic</p>
@@ -184,55 +168,35 @@
             <h2 class="experience-sub-title">Backend Development</h2>
             <div class="article-container">
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Checkmark" class="icon" width="auto" height="auto">
                 <div>
                   <h3>Python</h3>
                   <p>Experienced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Checkmark" class="icon" width="auto" height="auto">
                 <div>
                   <h3>C & C++</h3>
                   <p>Intermediate</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Checkmark" class="icon" width="auto" height="auto">
                 <div>
                   <h3>Django</h3>
                   <p>Basic</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Checkmark" class="icon" width="auto" height="auto">
                 <div>
                   <h3>PostgreSQL</h3>
                   <p>Learning</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Checkmark" class="icon" width="auto" height="auto">
                 <div>
                   <h3>Git</h3>
                   <p>Intermediate</p>
@@ -258,7 +222,7 @@
           <div class="details-container color-container">
             <h2 class="experience-sub-title project-title">
               <a href="https://github.com/SomeOrdinaryBro?tab=repositories" target="_blank">Browse My Work</a>
-            </h2>
+          </h2>          
           </div>
         </div>
       </div>
@@ -280,7 +244,7 @@
             alt="Email icon"
             class="icon contact-icon email-icon"
           />
-          <p><a href="mailto:examplemail@gmail.com">sajid@duck.com</a></p>
+          <p><a href="mailto:sajid@duck.com">sajid@duck.com</a></p>
         </div>
         <div class="contact-info-container">
           <img
@@ -293,7 +257,7 @@
       </div>
     </section>
     <footer>
-      <nav>
+      <nav role="navigation" aria-label="Secondary Navigation">
         <div class="nav-links-container">
           <ul class="nav-links">
             <li><a href="#about">About</a></li>
