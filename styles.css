@@ -17,8 +17,8 @@
 .experience-details-container {
   display: flex;
   align-items: normal;
-  justify-content: center; /* Vertically center content */
-  height: 80%; /* Adjust the height as needed */
+  justify-content: center;
+  height: 80%; 
 }
 
 body {
