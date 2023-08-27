@@ -8,7 +8,7 @@ particlesJS("particle-background", {
         },
       },
       color: {
-        value: ["#000000", "#FF0000", "#00FF00", "#0000FF", "#FFFF00"], 
+        value: ["#FF0000", "#00FF00", "#FFFF00","#FFA500", "#fc03d3", "#fc0380", "#00ffea"], 
       },
       shape: {
         type: "circle", 
