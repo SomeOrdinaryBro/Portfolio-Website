@@ -41,6 +41,7 @@
 }
 
 .logo:hover:after {
+  cursor: pointer;
   bottom: 2px;
   left: 2px;
 }
