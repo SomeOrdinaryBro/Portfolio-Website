@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="style.css" />
+    <title>SomeOrdinaryBro</title>
+    <link rel="icon" href="./images/Site-Logo-Title.png" type="image/png">    
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="#">SomeOrdinaryBro</a></div>
+            <ul class="links">
+                <li><a href="https://www.linkedin.com/in/sajid-s/">LinkedIn</a></li>
+                <li><a href="https://github.com/SomeOrdinaryBro">GitHub</a></li>
+                <li><a href="https://discord.gg/auEGucDYAX">Discord Server</a></li>
+            </ul>
+            <a href="./Support Page/Support-page.html" class="action_btn">Contact Me</a>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+        
+        <div class="dropdown_menu">
+            <li><a href="https://www.linkedin.com/in/sajid-s/">LinkedIn</a></li>
+            <li><a href="https://github.com/SomeOrdinaryBro">GitHub</a></li>
+            <li><a href="https://discord.gg/auEGucDYAX">Discord Server</a></li>
+            <li><a href="#" class="action_btn">Contact Me</a></li>
+        </div>
+    </header>
+
+    <video autoplay muted loop id="video-background">
+        <source src="./images/Background-vid3.mp4" type="video/mp4">
+    </video>
+
+    <main>
+        <section id="hero">
+          <div class="welcome-txt">
+            <h1>Welcome To My Landing Page</h1>
+          </div>
+          <a href="./Home Page/index.html" class="landing-button">
+            <button>My Projects</button>
+          </a>
+        </section>
+      </main>
+
+    <script>
+        const toggleBtn = document.querySelector('.toggle_btn')
+        const toggleBtnIcon = document.querySelector('.toggle_btn i')
+        const dropDownMenu = document.querySelector('.dropdown_menu')
+
+        toggleBtn.onclick =  function () {
+            dropDownMenu.classList.toggle('open')
+            const isOpen = dropDownMenu.classList.contains('open')
+
+            toggleBtnIcon.classList = isOpen
+                ? 'fa-solid fa-xmark'
+                : 'fa-solid fa-bars'
+        }
+
+		document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+</body>
+</html>
