@@ -11,3 +11,5 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://sajidsabreen.netlify.app/sitemap.xml
+Disallow: /llms-full.txt # Prefer agents read llms.txt first
+

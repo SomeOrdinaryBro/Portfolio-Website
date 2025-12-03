@@ -1,0 +1,110 @@
+# Sajid Sabreen | Product Visionary & Systems Builder
+
+"I build systems that turn complexity into flow."
+
+The best systems disappear. They don’t demand attention. They just work.
+
+---
+
+## Chapter Two: The Problem
+Companies drown in their own complexity. Every industry. Same pattern. Growth brings chaos. Systems that helped become obstacles.
+
+- Processes break under pressure
+- Operations lag behind growth
+- Tools fight each other instead of working together
+
+**I fix that.**
+
+---
+
+## Chapter Three: The Builder
+My value isn’t tied to a tool or an industry. It’s tied to understanding systems, fixing friction, and scaling what works.
+
+I’ve built across tech, finance, behavioral AI, medical, and telecommunications. My skills transfer because I learn fast, understand the business, and architect systems that last. I turn messy environments into predictable, scalable machines.
+
+### Core Capabilities
+1. **Systems Thinking**: I see the whole machine, not just the parts. I map the friction and fix what actually matters.
+2. **Rapid Execution**: I ship fast. Clean. Scalable. No endless planning loops. Build, test, refine, deploy.
+3. **Problem Clarity**: Most teams solve symptoms. I find the real bottleneck and remove it.
+4. **Industry Agnostic**: My edge isn’t domain knowledge. It’s system knowledge.
+
+---
+
+## Chapter Four: The Breakthroughs
+
+### 01. Digital Scan (Behavioral AI Engine)
+- **Problem**: Teams needed fast, accurate behavioral insight but were stuck with long questionnaires and manual research.
+- **Solution**: Built an AI engine that generates science-backed behavioral insight from just a name, job title, and company. No surveys. No forms.
+- **Impact**: Insight in seconds instead of hours. Used across hiring, sales, and client relationships.
+
+### 02. Discovery SDK (Embeddable Behavioral Module)
+- **Problem**: Companies wanted behavioral intelligence inside their apps but couldn’t justify a full rebuild.
+- **Solution**: Designed a drop-in SDK that delivers the full discovery experience with customizable depth, multi-language support, and webhook tracking.
+- **Impact**: Faster integrations. Wider adoption. Scales across platforms with minimal effort.
+
+### 03. Gene Facilitate (AI Behavioral Conversation Engine)
+- **Problem**: Users struggled to understand behavioral insights without a human guiding them.
+- **Solution**: Built an AI assistant that interprets behavioral data, explains insights in plain language, and generates advisor-ready summaries instantly.
+- **Impact**: Clearer decisions. Faster onboarding. Zero manual interpretation needed.
+
+### 04. Watchdog System (120+ Endpoint Monitoring)
+- **Problem**: Critical systems failed silently and teams only found out from users.
+- **Solution**: Built an automated monitoring and self-healing layer for 120+ endpoints, including alerting, auto-recovery, and escalation rules.
+- **Impact**: Near-zero downtime. Issues fixed before teams even hear about them.
+
+### 05. Operational Automation Suite (90% Workflow Automation)
+- **Problem**: Manual workflows created errors, delays, and cross-team bottlenecks.
+- **Solution**: Automated core operational processes across engineering, marketing, and leadership using AI and system design.
+- **Impact**: 90%+ workflows automated. 40+ hours saved weekly. ~85% error reduction.
+
+### 06. Financial Behavior & Work Talent Reports (Insight Clarity Redesign)
+- **Problem**: Core behavioral reports were dense, overwhelming, and failed to highlight the insights that mattered for real decisions.
+- **Solution**: Redesigned the Financial Behavior and Work Talent reports with clearer scoring logic, improved insight narratives, modern visuals, and stronger behavioral modeling.
+- **Impact**: Sharper insights. Faster understanding. Better advisor and client conversations.
+
+---
+
+## Chapter Five: Versatility
+My work isn’t tied to an industry. It’s tied to understanding systems, fixing the friction, and scaling what works.
+
+- **Finance / Wealthtech**: Risk behavior systems, advisor tools, market intelligence
+- **Behavioral Science & AI**: Personality engines, predictive models, insight platforms
+- **Enterprise Operations**: Workflow automation, monitoring systems, internal tooling
+- **Medical / Health**: Patient systems, operational infrastructure, diagnostic tools
+- **Telecommunications**: Support systems, customer operations, technical diagnostics
+
+---
+
+## Chapter Six: The Principles
+These guide every system I build, every product I ship.
+
+1. **Simplicity is discipline**: Complexity is easy. Anyone can add. Simplicity requires saying no until only what matters remains.
+2. **Operations should be invisible**: The best operations don't get noticed. They just work. Silence is a feature.
+3. **Automation is respect**: Respect people's time. If a machine can do it, let the machine do it.
+
+---
+
+## Chapter Seven: The Path
+
+- **2024–Present: Operations & Product Lead (H Connect International)**
+  Leading product and operations across US-based behavioral tech and finance teams. Built Watchdog, automated 90% of workflows, reengineered release pipelines across 3 time zones, and designed AI pipelines that doubled marketing output.
+
+- **2023–2024: Senior Technology Administrator (H Connect International)**
+  Owned internal systems, Office 365, Azure, and operational workflows. Built a custom Django ticketing system that replaced slow off-the-shelf tools.
+
+- **2022–2023: Software Administrator (H Connect International)**
+  Managed IT stack, security, policies, and internal applications. Removed bottleneck tools and rebuilt workflows for reliability.
+
+- **2019–2020: Technical Support Specialist (Dialog Axiata)**
+  Supported broadcast systems. Handled troubleshooting, diagnostics, and operational stability.
+
+---
+
+## Contact
+Let's build something that matters. Systems that scale. Products that ship. Operations that run themselves.
+
+- **Email**: sajid@duck.com
+- **LinkedIn**: [Sajid Sabreen](https://www.linkedin.com/in/sajidsabreen)
+
+---
+© 2025 Sajid Sabreen. Built with clarity and precision.

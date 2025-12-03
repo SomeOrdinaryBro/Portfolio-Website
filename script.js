@@ -1,32 +1,24 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // --- Theme Logic ---
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const themeText = document.getElementById('theme-text');
-    const html = document.documentElement;
+document.addEventListener("DOMContentLoaded", () => {
+    const root = document.documentElement;
+    const toggle = document.getElementById("theme-toggle");
+    const themeText = document.getElementById("theme-text");
 
-    // Check for saved theme or system preference
-    const savedTheme = localStorage.getItem('theme');
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    let currentTheme = savedTheme || systemTheme;
-
-    function applyTheme(theme) {
-        if (theme === 'dark') {
-            html.classList.add('dark');
-            themeText.textContent = 'Dark';
-        } else {
-            html.classList.remove('dark');
-            themeText.textContent = 'Light';
-        }
-        localStorage.setItem('theme', theme);
-        currentTheme = theme;
+    // Load saved theme
+    if (localStorage.theme === "dark") {
+        root.classList.add("dark");
+        themeText.textContent = "Dark";
     }
 
-    applyTheme(currentTheme);
+    toggle.addEventListener("click", () => {
+        root.classList.toggle("dark");
+        const isDark = root.classList.contains("dark");
 
-    themeToggleBtn.addEventListener('click', () => {
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        applyTheme(newTheme);
+        localStorage.theme = isDark ? "dark" : "light";
+        themeText.textContent = isDark ? "Dark" : "Light";
     });
+
+    lucide.createIcons();
+
 
     // --- Navigation Scroll Effect ---
     const navbar = document.getElementById('navbar');
@@ -62,10 +54,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('background-field');
     const ctx = canvas.getContext('2d');
 
-    let particles = [];
+    // Typed Array Constants
+    const PARTICLE_STRIDE = 8;
+    // [x, y, baseVx, baseVy, vx, vy, radius, colorIndex]
+    const P_X = 0, P_Y = 1, P_BASE_VX = 2, P_BASE_VY = 3, P_VX = 4, P_VY = 5, P_RADIUS = 6, P_COLOR = 7;
+
+    let particlesData;
+    let particleCount = 0;
+
     const cursor = { x: -1000, y: -1000, active: false, intensity: 0 };
     let lastMoveTime = Date.now();
     let animationFrameId;
+
+    // Spatial Grid
+    const GRID_CELL_SIZE = 150;
+    let grid = {}; // Map cell key "x,y" to array of particle indices
+
+    // Galaxy Theme Colors
+    const COLORS_DARK = ['#FFFFFF', '#A0C4FF', '#BDB2FF']; // White, Light Blue, Light Purple
+    const COLORS_LIGHT = ['#1B263B', '#240046', '#000000']; // Dark Blue, Dark Purple, Black
 
     function resizeCanvas() {
         const maxDPR = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -76,16 +83,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createParticles() {
         const isMobile = window.innerWidth < 768;
-        const particleCount = isMobile ? 50 : 100;
-        particles = [];
+        particleCount = isMobile ? 150 : 300; // Increased for starfield effect
+        particlesData = new Float32Array(particleCount * PARTICLE_STRIDE);
+
         for (let i = 0; i < particleCount; i++) {
-            particles.push({
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                vx: (Math.random() - 0.5) * 0.3,
-                vy: (Math.random() - 0.5) * 0.3,
-                radius: Math.random() * 1.5 + 1,
-            });
+            const index = i * PARTICLE_STRIDE;
+            particlesData[index + P_X] = Math.random() * window.innerWidth;
+            particlesData[index + P_Y] = Math.random() * window.innerHeight;
+            // Slower, ambient drift for galaxy feel
+            particlesData[index + P_BASE_VX] = (Math.random() - 0.5) * 0.2;
+            particlesData[index + P_BASE_VY] = (Math.random() - 0.5) * 0.2;
+            particlesData[index + P_VX] = 0;
+            particlesData[index + P_VY] = 0;
+
+            // Size distribution: mostly small stars, few larger ones
+            const r = Math.random();
+            particlesData[index + P_RADIUS] = r < 0.8 ? Math.random() * 1 + 0.5 : Math.random() * 1.5 + 1;
+
+            // Random color index (0-2)
+            particlesData[index + P_COLOR] = Math.floor(Math.random() * 3);
         }
     }
 
@@ -95,38 +111,60 @@ document.addEventListener('DOMContentLoaded', () => {
             cursor.intensity *= 0.95;
         }
 
-        particles.forEach(particle => {
-            particle.x += particle.vx;
-            particle.y += particle.vy;
+        // Clear Grid
+        grid = {};
 
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        for (let i = 0; i < particleCount; i++) {
+            const index = i * PARTICLE_STRIDE;
+
+            // Update Position
+            particlesData[index + P_X] += particlesData[index + P_BASE_VX] + particlesData[index + P_VX];
+            particlesData[index + P_Y] += particlesData[index + P_BASE_VY] + particlesData[index + P_VY];
+
+            // Interaction
             if (cursor.active && cursor.intensity > 0.01) {
-                const dx = cursor.x - particle.x;
-                const dy = cursor.y - particle.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
+                const dx = cursor.x - particlesData[index + P_X];
+                const dy = cursor.y - particlesData[index + P_Y];
+                const distSq = dx * dx + dy * dy;
 
-                if (distance < 250) {
+                if (distSq < 62500) { // 250^2
+                    const distance = Math.sqrt(distSq);
                     const force = (250 - distance) / 250;
                     const angle = Math.atan2(dy, dx);
                     const interaction = distance < 120 ? -1.2 : 0.3;
-                    particle.vx += Math.cos(angle) * force * interaction * cursor.intensity;
-                    particle.vy += Math.sin(angle) * force * interaction * cursor.intensity;
+
+                    particlesData[index + P_VX] += Math.cos(angle) * force * interaction * cursor.intensity;
+                    particlesData[index + P_VY] += Math.sin(angle) * force * interaction * cursor.intensity;
                 }
             }
 
-            particle.vx *= 0.96;
-            particle.vy *= 0.96;
+            // Friction
+            particlesData[index + P_VX] *= 0.96;
+            particlesData[index + P_VY] *= 0.96;
 
-            if (particle.x < 0) particle.x = window.innerWidth;
-            if (particle.x > window.innerWidth) particle.x = 0;
-            if (particle.y < 0) particle.y = window.innerHeight;
-            if (particle.y > window.innerHeight) particle.y = 0;
-        });
+            // Wrap around
+            if (particlesData[index + P_X] < 0) particlesData[index + P_X] = width;
+            if (particlesData[index + P_X] > width) particlesData[index + P_X] = 0;
+            if (particlesData[index + P_Y] < 0) particlesData[index + P_Y] = height;
+            if (particlesData[index + P_Y] > height) particlesData[index + P_Y] = 0;
+
+            // Add to Grid
+            const gx = Math.floor(particlesData[index + P_X] / GRID_CELL_SIZE);
+            const gy = Math.floor(particlesData[index + P_Y] / GRID_CELL_SIZE);
+            const key = `${gx},${gy}`;
+            if (!grid[key]) grid[key] = [];
+            grid[key].push(index);
+        }
     }
 
     function draw() {
-        const isDark = html.classList.contains('dark');
+        const isDark = root.classList.contains('dark');
         const width = window.innerWidth;
         const height = window.innerHeight;
+        const colors = isDark ? COLORS_DARK : COLORS_LIGHT;
 
         ctx.clearRect(0, 0, width, height);
 
@@ -161,40 +199,104 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fillRect(0, 0, width, height);
         }
 
-        // Connections
+        // Connections & Particles
         const isMobile = window.innerWidth < 768;
-        const connectionDistance = isMobile ? 120 : 150;
-        if (!isMobile) {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
+        const connectionDistSq = isMobile ? 14400 : 22500; // 120^2 or 150^2
 
-                    if (distance < connectionDistance) {
-                        const opacity = (1 - distance / connectionDistance) * 0.12;
-                        ctx.strokeStyle = isDark
-                            ? `rgba(255, 255, 255, ${opacity})`
-                            : `rgba(100, 100, 120, ${opacity})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
+        // Drawing Connections
+        if (!isMobile) {
+            ctx.lineWidth = 0.5;
+            const cells = Object.keys(grid);
+            for (const key of cells) {
+                const [gx, gy] = key.split(',').map(Number);
+                const cellParticles = grid[key];
+
+                // Internal checks
+                for (let i = 0; i < cellParticles.length; i++) {
+                    const idxA = cellParticles[i];
+
+                    // Check against other particles in same cell
+                    for (let j = i + 1; j < cellParticles.length; j++) {
+                        const idxB = cellParticles[j];
+                        drawConnection(idxA, idxB, connectionDistSq, isDark);
+                    }
+
+                    // Check neighbor cells
+                    const neighborOffsets = [[1, 0], [0, 1], [1, 1], [-1, 1]];
+                    for (const [ox, oy] of neighborOffsets) {
+                        const nKey = `${gx + ox},${gy + oy}`;
+                        if (grid[nKey]) {
+                            const neighborParticles = grid[nKey];
+                            for (const idxB of neighborParticles) {
+                                drawConnection(idxA, idxB, connectionDistSq, isDark);
+                            }
+                        }
                     }
                 }
             }
         }
 
-        // Particles
-        particles.forEach(particle => {
-            ctx.fillStyle = isDark
-                ? 'rgba(255, 255, 255, 0.4)'
-                : 'rgba(100, 100, 120, 0.5)';
+        // Draw Particles with Stretch
+        for (let i = 0; i < particleCount; i++) {
+            const index = i * PARTICLE_STRIDE;
+            const x = particlesData[index + P_X];
+            const y = particlesData[index + P_Y];
+            const vx = particlesData[index + P_BASE_VX] + particlesData[index + P_VX];
+            const vy = particlesData[index + P_BASE_VY] + particlesData[index + P_VY];
+            const speed = Math.sqrt(vx * vx + vy * vy);
+            const radius = particlesData[index + P_RADIUS];
+            const colorIdx = particlesData[index + P_COLOR];
+
+            // Base color from palette
+            const baseColor = colors[colorIdx];
+
+            // Opacity based on theme
+            const alpha = isDark ? 0.8 : 0.7;
+
+            ctx.fillStyle = hexToRgba(baseColor, alpha);
+
             ctx.beginPath();
-            ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+
+            if (speed > 0.5) {
+                // Stretch effect
+                const angle = Math.atan2(vy, vx);
+                const stretch = Math.min(speed * 5, 15);
+                ctx.ellipse(x, y, radius + stretch, radius, angle, 0, Math.PI * 2);
+            } else {
+                ctx.arc(x, y, radius, 0, Math.PI * 2);
+            }
+
             ctx.fill();
-        });
+        }
+    }
+
+    // Helper to convert hex to rgba
+    function hexToRgba(hex, alpha) {
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+    function drawConnection(idxA, idxB, maxDistSq, isDark) {
+        const dx = particlesData[idxA + P_X] - particlesData[idxB + P_X];
+        const dy = particlesData[idxA + P_Y] - particlesData[idxB + P_Y];
+        const distSq = dx * dx + dy * dy;
+
+        if (distSq < maxDistSq) {
+            const distance = Math.sqrt(distSq);
+            const maxDist = Math.sqrt(maxDistSq);
+            const opacity = (1 - distance / maxDist) * 0.12;
+
+            ctx.strokeStyle = isDark
+                ? `rgba(255, 255, 255, ${opacity})`
+                : `rgba(0, 0, 0, ${opacity})`;
+
+            ctx.beginPath();
+            ctx.moveTo(particlesData[idxA + P_X], particlesData[idxA + P_Y]);
+            ctx.lineTo(particlesData[idxB + P_X], particlesData[idxB + P_Y]);
+            ctx.stroke();
+        }
     }
 
     function animate() {

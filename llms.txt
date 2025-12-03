@@ -1,0 +1,17 @@
+# Sajid Sabreen - Product Visionary & Systems Builder
+
+> I build systems that turn complexity into flow.
+
+## AI Agent Navigation
+- **Full Portfolio Content**: [llms-full.txt](llms-full.txt)
+- **Main Website**: [https://sajidsabreen.netlify.app/](https://sajidsabreen.netlify.app/)
+
+## Summary
+Sajid Sabreen is a Product Visionary and Systems Builder specializing in behavioral AI, operations, and scalable systems. He has built solutions across finance, medical, and telecommunications industries, focusing on automation, clarity, and rapid execution.
+
+## Key Projects
+- **Digital Scan**: Behavioral AI Engine
+- **Discovery SDK**: Embeddable Behavioral Module
+- **Gene Facilitate**: AI Behavioral Conversation Engine
+- **Watchdog System**: 120+ Endpoint Monitoring
+- **Operational Automation Suite**: 90% Workflow Automation
