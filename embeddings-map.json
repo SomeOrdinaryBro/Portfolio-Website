@@ -1,0 +1,84 @@
+{
+    "version": "2025-12",
+    "source": "https://sajidsabreen.netlify.app/llms-full.txt",
+    "sections": [
+        {
+            "id": "intro-mission",
+            "title": "Mission and Core Positioning",
+            "source_range": "Lines 1-8",
+            "summary": "Introduces Sajid as a systems builder focused on turning complexity into flow and explains his philosophy that the best systems disappear into the background."
+        },
+        {
+            "id": "chapter-2-problem",
+            "title": "The Problem: Operational Complexity",
+            "source_range": "Lines 9-18",
+            "summary": "Defines how companies drown in complexity as they scale, with processes breaking, operations lagging, and tools clashing, framing the core problem Sajid solves."
+        },
+        {
+            "id": "chapter-3-builder",
+            "title": "The Builder and Core Capabilities",
+            "source_range": "Lines 20-31",
+            "summary": "Describes Sajid’s systems-first approach, his industry-agnostic value, and capabilities like systems thinking, rapid execution, and problem clarity."
+        },
+        {
+            "id": "project-digital-scan",
+            "title": "Digital Scan",
+            "source_range": "Lines 35-39",
+            "summary": "Explains Digital Scan as a behavioral AI engine producing fast, science-backed insight from minimal inputs for hiring, sales, and advisory use cases."
+        },
+        {
+            "id": "project-discovery-sdk",
+            "title": "Discovery SDK",
+            "source_range": "Lines 40-44",
+            "summary": "Covers the embeddable Discovery SDK that lets companies add behavioral discovery without rebuilding their apps."
+        },
+        {
+            "id": "project-gene-facilitate",
+            "title": "Gene Facilitate",
+            "source_range": "Lines 45-48",
+            "summary": "Describes the AI conversation engine that interprets behavioral data and explains it in plain language with advisor-ready outputs."
+        },
+        {
+            "id": "project-watchdog",
+            "title": "Watchdog System",
+            "source_range": "Lines 50-53",
+            "summary": "Details the monitoring and self-healing system covering 120+ endpoints with automated alerts and recovery."
+        },
+        {
+            "id": "project-automation-suite",
+            "title": "Operational Automation Suite",
+            "source_range": "Lines 55-58",
+            "summary": "Outlines the automation layer that drives 90 percent workflow automation, time savings, and error reduction."
+        },
+        {
+            "id": "project-report-redesign",
+            "title": "Financial Behavior and Work Talent Reports",
+            "source_range": "Lines 60-63",
+            "summary": "Explains how core reports were redesigned for clearer insight, better behavioral modeling, and more effective advisor conversations."
+        },
+        {
+            "id": "chapter-5-versatility",
+            "title": "Domain Versatility",
+            "source_range": "Lines 67-76",
+            "summary": "Shows cross-domain experience in finance, behavioral AI, enterprise operations, medical systems, and telecom."
+        },
+        {
+            "id": "chapter-6-principles",
+            "title": "Guiding Principles",
+            "source_range": "Lines 78-85",
+            "summary": "Lists core principles: disciplined simplicity, invisible operations, and automation as respect."
+        },
+        {
+            "id": "chapter-7-path",
+            "title": "Career Path",
+            "source_range": "Lines 87-101",
+            "summary": "Chronological career view, highlighting roles at H Connect and Dialog and the evolution toward operations and product leadership."
+        },
+        {
+            "id": "contact",
+            "title": "Contact Information",
+            "source_range": "Lines 103-111",
+            "summary": "Provides email and LinkedIn contact details for Sajid."
+        }
+    ]
+}

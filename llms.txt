@@ -1,17 +1,48 @@
-# Sajid Sabreen - Product Visionary & Systems Builder
+# Allow all crawlers including AI/LLM agents
+User-agent: *
+Allow: /
 
-> I build systems that turn complexity into flow.
+# Explicit allow for major AI crawlers
+User-agent: GPTBot
+Allow: /
 
-## AI Agent Navigation
-- **Full Portfolio Content**: [llms-full.txt](llms-full.txt)
-- **Main Website**: [https://sajidsabreen.netlify.app/](https://sajidsabreen.netlify.app/)
+User-agent: OpenAI-SearchBot
+Allow: /
 
-## Summary
-Sajid Sabreen is a Product Visionary and Systems Builder specializing in behavioral AI, operations, and scalable systems. He has built solutions across finance, medical, and telecommunications industries, focusing on automation, clarity, and rapid execution.
+User-agent: ClaudeBot
+Allow: /
 
-## Key Projects
-- **Digital Scan**: Behavioral AI Engine
-- **Discovery SDK**: Embeddable Behavioral Module
-- **Gene Facilitate**: AI Behavioral Conversation Engine
-- **Watchdog System**: 120+ Endpoint Monitoring
-- **Operational Automation Suite**: 90% Workflow Automation
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: YandexGPTBot
+Allow: /
+
+User-agent: NeevaBot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Full AI content index
+AI-Content: /llms-full.txt
+
+Sitemap: https://sajidsabreen.netlify.app/sitemap.xml
